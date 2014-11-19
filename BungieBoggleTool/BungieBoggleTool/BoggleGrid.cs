@@ -18,6 +18,23 @@ namespace BungieBoggleTool
         private Dictionary<Tuple<int, int>, Letter> letters;
 
         /// <summary>
+        /// Constructs BoggleGrid from the BoggleGrid file.
+        /// </summary>
+        /// <param name="boggleGridFile">File to Populate the BoggleGrid.</param>
+        public BoggleGrid(StreamReader boggleGridFile)
+        {
+            Populate(boggleGridFile);
+        }
+
+        /// <summary>
+        /// Default constrcutor.  Generates default grid.
+        /// </summary>
+        public BoggleGrid()
+        {
+            GenerateGrid();
+        }
+
+        /// <summary>
         /// Accessor method for uniqueLetters.
         /// </summary>
         public HashSet<char> GetUniqueLetters()
@@ -26,15 +43,15 @@ namespace BungieBoggleTool
         }
 
         /// <summary>
-        /// Parses Boggle BoggleGrid from the BoggleGrid file.
+        /// Parses BoggleGrid from the BoggleGrid file.
         /// </summary>
         /// <param name="boggleGridFile">File to Populate the BoggleGrid.</param>
-        public void Populate(StreamReader boggleGridFile)
+        private void Populate(StreamReader boggleGridFile)
         {
             string line = null;
             bool errorOccured = false;
-            int numRows, numCols;
-            Letter letter;
+            int numRows = 0, numCols = 0;
+            Letter letter = null;
 
             do
             {

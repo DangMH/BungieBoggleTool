@@ -18,16 +18,16 @@
     <Position X="4.25" Y="0.75" Width="1.5" />
     <AssociationLine Name="dictionary" Type="BungieBoggleTool.Dictionary" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="4.946" Y="2.056" />
-        <Point X="4.946" Y="3.386" />
-        <Point X="4.25" Y="3.386" />
+        <Point X="4.812" Y="2.046" />
+        <Point X="4.812" Y="3.375" />
+        <Point X="4.25" Y="3.375" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="grid" Type="BungieBoggleTool.BoggleGrid" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="grid" Type="BungieBoggleTool.BoggleGrid" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.062" Y="2.056" />
-        <Point X="5.062" Y="3.386" />
-        <Point X="5.75" Y="3.386" />
+        <Point X="5.281" Y="2.046" />
+        <Point X="5.281" Y="3.375" />
+        <Point X="5.75" Y="3.375" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>

@@ -26,7 +26,7 @@ namespace BungieBoggleTool
         /// <param name="boggleGrid">grid to check possible words against.</param>
         public Dictionary(StreamReader dictionaryFile, BoggleGrid boggleGrid)
         {
-            throw new System.NotImplementedException();
+            Populate(dictionaryFile, boggleGrid);
         }
 
         /// <summary>
@@ -35,26 +35,16 @@ namespace BungieBoggleTool
         /// <param name="boggleGridFile">File containing the list of words.</param>
         /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
         public Dictionary(StreamReader dictionaryFile)
+            : this(dictionaryFile, null)
         {
-            throw new System.NotImplementedException();
         }
 
         /// <summary>
         /// Default constructor.
         /// </summary>
         public Dictionary()
+            : this(null, null)
         {
-            throw new System.NotImplementedException();
-        }
-        /// <summary>
-        /// Populates the dictionary from words listed in a dictionary file.
-        /// </summary>
-        /// <param name="boggleGridFile">File containing the list of words.</param>
-        /// <param name="boggleGridFile">File containing the list of words.</param>
-        /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
-        public void Populate(StreamReader dictionaryFile)
-        {
-            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -63,9 +53,54 @@ namespace BungieBoggleTool
         /// <param name="boggleGridFile">File containing the list of words.</param>
         /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
         /// <param name="boggleGrid">grid to check possible words against.</param>
-        public void Populate(StreamReader dictionaryFile, BoggleGrid boggleGrid)
+        private void Populate(StreamReader dictionaryFile, BoggleGrid boggleGrid)
         {
-            throw new System.NotImplementedException();
+            HashSet<char> uniqueLetters = null;
+            string line = null, prefix = null;
+            bool wordPossible = true;
+
+            words = new HashSet<string>();
+            prefixes = new HashSet<string>();
+
+            if (null == dictionaryFile)
+            {
+                // Return with empty dictionary
+                return;
+            }
+            else if (null != boggleGrid)
+            {
+                uniqueLetters = boggleGrid.GetUniqueLetters();
+            }
+
+            while (null != (line = dictionaryFile.ReadLine()))
+            {
+                wordPossible = true;
+
+                // Check word against set of unique letters found in the grid
+                if (null != uniqueLetters)
+                {
+                    foreach (char c in line)
+                    {
+                        if (!uniqueLetters.Contains(c))
+                        {
+                            wordPossible = false;
+                            break;
+                        }
+                    }
+                }
+
+                // Add word and prefixes
+                if (wordPossible)
+                {
+                    words.Add(line);
+
+                    prefix = "";
+                    foreach (char c in line)
+                    {
+                        prefixes.Add(prefix += c);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -74,7 +109,7 @@ namespace BungieBoggleTool
         /// <param name="word">Word to be found.</param>
         public bool contains(string word)
         {
-            throw new System.NotImplementedException();
+            return words.Contains(word);
         }
 
         /// <summary>
@@ -83,7 +118,7 @@ namespace BungieBoggleTool
         /// <param name="prefix">Prefix to be found.</param>
         public bool containsPrefix(string prefix)
         {
-            throw new System.NotImplementedException();
+            return prefixes.Contains(prefix);
         }
     }
 }
