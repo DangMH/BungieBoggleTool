@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace BungieBoggleTool
 {
     class Dictionary
     {
         /// <summary>
-        /// Set of words in the Dictionary.
+        /// Set of words in the dictionary.
         /// </summary>
         private HashSet<string> words;
         /// <summary>
@@ -18,22 +19,22 @@ namespace BungieBoggleTool
         private HashSet<string> prefixes;
 
         /// <summary>
-        /// Constructs the Dictionary with the words in the dictionary file against those possible according to the boggleGrid.
+        /// Constructs the dictionary with the words in the dictionary file against those possible according to the boggleGrid.
         /// </summary>
         /// <param name="boggleGridFile">File containing the list of words.</param>
-        /// <param name="dictionaryFile">File containing the words to populate the Dictionary.</param>
-        /// <param name="boggleGrid">Grid to check possible words against.</param>
-        public Dictionary(System.IO.File dictionaryFile, BoggleGrid boggleGrid)
+        /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
+        /// <param name="boggleGrid">grid to check possible words against.</param>
+        public Dictionary(StreamReader dictionaryFile, BoggleGrid boggleGrid)
         {
             throw new System.NotImplementedException();
         }
 
         /// <summary>
-        /// Constructs the Dictionary with the words in the dictionary file.
+        /// Constructs the dictionary with the words in the dictionary file.
         /// </summary>
         /// <param name="boggleGridFile">File containing the list of words.</param>
-        /// <param name="dictionaryFile">File containing the words to populate the Dictionary.</param>
-        public Dictionary(System.IO.File dictionaryFile)
+        /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
+        public Dictionary(StreamReader dictionaryFile)
         {
             throw new System.NotImplementedException();
         }
@@ -46,23 +47,23 @@ namespace BungieBoggleTool
             throw new System.NotImplementedException();
         }
         /// <summary>
-        /// Populates the Dictionary from words listed in a dictionary file.
+        /// Populates the dictionary from words listed in a dictionary file.
         /// </summary>
         /// <param name="boggleGridFile">File containing the list of words.</param>
         /// <param name="boggleGridFile">File containing the list of words.</param>
-        /// <param name="dictionaryFile">File containing the words to populate the Dictionary.</param>
-        public void populate(System.IO.File dictionaryFile)
+        /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
+        public void Populate(StreamReader dictionaryFile)
         {
             throw new System.NotImplementedException();
         }
 
         /// <summary>
-        /// Populates the Dictionary from words listed in a dictionary file, but only ones containing letters found in the BoggleGrid.
+        /// Populates the dictionary from words listed in a dictionary file, but only ones containing letters found in the BoggleGrid.
         /// </summary>
         /// <param name="boggleGridFile">File containing the list of words.</param>
-        /// <param name="dictionaryFile">File containing the words to populate the Dictionary.</param>
-        /// <param name="boggleGrid">Grid to check possible words against.</param>
-        public void populate(System.IO.File dictionaryFile, BoggleGrid boggleGrid)
+        /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
+        /// <param name="boggleGrid">grid to check possible words against.</param>
+        public void Populate(StreamReader dictionaryFile, BoggleGrid boggleGrid)
         {
             throw new System.NotImplementedException();
         }
