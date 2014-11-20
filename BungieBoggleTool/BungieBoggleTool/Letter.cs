@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BungieBoggleTool
 {
-    public class Letter
+    class Letter
     {
         /// <summary>
         /// Original char representing the block.
@@ -24,7 +24,7 @@ namespace BungieBoggleTool
         /// <summary>
         /// Populates Letter with given string.
         /// </summary>
-        /// <param name="letters">Character(s) to Populate the Letter.</param>
+        /// <param name="symbol">Character(s) to Populate the Letter.</param>
         public Letter(char symbol)
         {
             if ('a' < symbol && symbol < 'z')
@@ -73,7 +73,7 @@ namespace BungieBoggleTool
         /// <summary>
         /// Returns the string representation of the Letter.
         /// </summary>
-        public string ToString()
+        public override string ToString()
         {
             return letters;
         }

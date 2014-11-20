@@ -6,16 +6,45 @@ using System.IO;
 
 namespace BungieBoggleTool
 {
-    public class BoggleGrid
+    class BoggleGrid
     {
         /// <summary>
         /// Unique set of letters found inside the boggleGrid.  Used for efficiency in populating a boggleGridFile.
         /// </summary>
         private HashSet<char> uniqueLetters;
         /// <summary>
-        /// grid of letters.
+        /// Grid of letters.
         /// </summary>
-        private Dictionary<Tuple<int, int>, Letter> letters;
+        private Dictionary<Coordinate, Letter> letters;
+        /// <summary>
+        /// Number of Rows.
+        /// </summary>
+        public int numRows
+        {
+            get
+            {
+                return numRows;
+            }
+            private set
+            {
+                numRows = value;
+            }
+        }
+        /// <summary>
+        /// Number of Rows.
+        /// </summary>
+        public int numCols
+        {
+            get
+            {
+                return numCols;
+            }
+            private set
+            {
+                numCols = value;
+            }
+        }
+
 
         /// <summary>
         /// Constructs BoggleGrid from the BoggleGrid file.
@@ -50,8 +79,12 @@ namespace BungieBoggleTool
         {
             string line = null;
             bool errorOccured = false;
-            int numRows = 0, numCols = 0;
             Letter letter = null;
+            int rowsRead = 0,
+                colsRead = 0;
+
+            numRows = 0;
+            numCols = 0;
 
             do
             {
@@ -61,11 +94,12 @@ namespace BungieBoggleTool
                     Console.WriteLine("FORMATTING ERROR: Missing BoggleGrid row value");
                     break;
                 }
-                if (errorOccured = !Int32.TryParse(line, out numRows))
+                if (errorOccured = !Int32.TryParse(line, out rowsRead))
                 {
                     Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid row value: " + numRows);
                     break;
                 }
+                numRows = rowsRead;
 
                 //Second line contains the column value
                 if (errorOccured = (null == (line = boggleGridFile.ReadLine())))
@@ -73,13 +107,14 @@ namespace BungieBoggleTool
                     Console.WriteLine("FORMATTING ERROR: Missing BoggleGrid column value");
                     break;
                 }
-                if (errorOccured = !Int32.TryParse(line, out numCols))
+                if (errorOccured = !Int32.TryParse(line, out colsRead))
                 {
                     Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid column value: " + numCols);
                     break;
                 }
+                numCols = colsRead;
 
-                letters = new Dictionary<Tuple<int, int>, Letter>(numRows * numCols);
+                letters = new Dictionary<Coordinate, Letter>(numRows * numCols);
                 uniqueLetters = new HashSet<char>();
 
                 for (int i = 0; i < numRows; ++i)
@@ -102,7 +137,7 @@ namespace BungieBoggleTool
                     for (int j = 0; j < numCols; ++j)
                     {
                         // Read the char at the ith column
-                        letters.Add(Tuple.Create<int, int>(i, j), letter = new Letter(line[j]));
+                        letters.Add(new Coordinate(i, j), letter = new Letter(line[j]));
 
                         // Add letters to the uniqueLetter set
                         foreach (char c in letter.ToString())
@@ -130,11 +165,10 @@ namespace BungieBoggleTool
         /// <summary>
         /// Accessor method to the Letter at (row, col).
         /// </summary>
-        /// <param name="row">Row of the Letter.</param>
-        /// <param name="col">Column of the Letter.</param>
-        public Letter Get(int row, int col)
+        /// <param name="coordinate">Row and column indices of the Letter.</param>
+        public Letter Get(Coordinate coordinate)
         {
-            return letters[Tuple.Create<int, int>(row, col)];
+            return letters[coordinate];
         }
 
         /// <summary>
@@ -146,14 +180,14 @@ namespace BungieBoggleTool
         {
             Letter letter;
 
-            letters = new Dictionary<Tuple<int, int>, Letter>(numRows * numCols);
+            letters = new Dictionary<Coordinate, Letter>(numRows * numCols);
             uniqueLetters = new HashSet<char>();
 
             for (int i = 0; i < numRows; ++i)
             {
                 for (int j = 0; j < numCols; ++j)
                 {
-                    letters.Add(Tuple.Create<int, int>(i, j), letter = new Letter());
+                    letters.Add(new Coordinate(i, j), letter = new Letter());
                     foreach (char c in letter.ToString())
                     {
                         uniqueLetters.Add(c);

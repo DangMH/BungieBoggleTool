@@ -21,7 +21,6 @@ namespace BungieBoggleTool
         /// <summary>
         /// Constructs the dictionary with the words in the dictionary file against those possible according to the boggleGrid.
         /// </summary>
-        /// <param name="boggleGridFile">File containing the list of words.</param>
         /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
         /// <param name="boggleGrid">grid to check possible words against.</param>
         public Dictionary(StreamReader dictionaryFile, BoggleGrid boggleGrid)
@@ -32,7 +31,6 @@ namespace BungieBoggleTool
         /// <summary>
         /// Constructs the dictionary with the words in the dictionary file.
         /// </summary>
-        /// <param name="boggleGridFile">File containing the list of words.</param>
         /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
         public Dictionary(StreamReader dictionaryFile)
             : this(dictionaryFile, null)
@@ -50,7 +48,6 @@ namespace BungieBoggleTool
         /// <summary>
         /// Populates the dictionary from words listed in a dictionary file, but only ones containing letters found in the BoggleGrid.
         /// </summary>
-        /// <param name="boggleGridFile">File containing the list of words.</param>
         /// <param name="dictionaryFile">File containing the words to Populate the dictionary.</param>
         /// <param name="boggleGrid">grid to check possible words against.</param>
         private void Populate(StreamReader dictionaryFile, BoggleGrid boggleGrid)
@@ -107,7 +104,7 @@ namespace BungieBoggleTool
         /// Returns true if the word is found within the dictionary, else false.
         /// </summary>
         /// <param name="word">Word to be found.</param>
-        public bool contains(string word)
+        public bool Contains(string word)
         {
             return words.Contains(word);
         }
@@ -116,7 +113,7 @@ namespace BungieBoggleTool
         /// Returns true if the given prefix is found in this dictionary.
         /// </summary>
         /// <param name="prefix">Prefix to be found.</param>
-        public bool containsPrefix(string prefix)
+        public bool ContainsPrefix(string prefix)
         {
             return prefixes.Contains(prefix);
         }
