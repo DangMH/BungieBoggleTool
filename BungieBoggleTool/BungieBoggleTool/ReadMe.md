@@ -27,16 +27,16 @@ Written in Visual Studio 2013
 
 ###Files
 
-- **<a href="resources/sowpods.txt">sowpods.txt</a>**: [Europe Scrabble Word List](http://www.freescrabbledictionary.com/sowpods.txt).
-- **<a href="resources/twl_2006_length.txt">twl_2006_length.txt</a>**: [Scrabble Junction Word List](http://www.scrabblejunction.org/wordlists.htm).
-- **<a href="resources/ospd.txt">ospd.txt</a>**: [Official Scrabble Players Dictionary](http://www.puzzlers.org/pub/wordlists/ospd.txt).
-- **<a href="bungieboggletool.cd">bungieboggletool.cd</a>**: Class diagram of the console application.
-- **<a href="bungieboggletool.cs">bungieboggletool.cs</a>**: Main file containing console application.
-- **<a href="dictionary.cs">dictionary.cs</a>**: Class representing the dictionary list of words to check against.
-- **<a href="bogglegrid.cs">bogglegrid.cs</a>**: Class representing the Boggle Grid.
-- **<a href="letter.cs">letter.cs</a>**: Class representing the Boggle Block.
-- **<a href="coordinate.cs">coordinate.cs</a>**: Class representing a coordinate.
-- **<a href="prefixstackset.cs">prefixstackset.cs</a>**: Class that contains Stack and Set functionality and tracks current prefix.  Used in the iterative DFS algorithm.
+- **<a href="Resources/sowpods.txt">sowpods.txt</a>**: [Europe Scrabble Word List](http://www.freescrabbledictionary.com/sowpods.txt).
+- **<a href="Resources/TWL_2006_LENGTH.txt">TWL_2006_LENGTH.txt</a>**: [Scrabble Junction Word List](http://www.scrabblejunction.org/wordlists.htm).
+- **<a href="Resources/ospd.txt">ospd.txt</a>**: [Official Scrabble Players Dictionary](http://www.puzzlers.org/pub/wordlists/ospd.txt).
+- **<a href="BungieBoggleTool.cd">BungieBoggleTool.cd</a>**: Class diagram of the console application.
+- **<a href="BungieBoggleTool.cs">BungieBoggleTool.cs</a>**: Main file containing console application.
+- **<a href="Dictionary.cs">Dictionary.cs</a>**: Class representing the dictionary list of words to check against.
+- **<a href="BoggleGrid.cs">BoggleGrid.cs</a>**: Class representing the Boggle Grid.
+- **<a href="Letter.cs">Letter.cs</a>**: Class representing the Boggle Block.
+- **<a href="Coordinate.cs">Coordinate.cs</a>**: Class representing a coordinate.
+- **<a href="PrefixStackSet.cs">PrefixStackSet.cs</a>**: Class that contains Stack and Set functionality and tracks current prefix.  Used in the iterative DFS algorithm.
 
 ###Installation
 
@@ -72,13 +72,13 @@ TESTING
 Tests were built with Visual Studio 2013 Unit Testing.
 
 ###Files
-- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\bungieboggletooltests.cs">bungieboggletooltests.cs</a>**: Unit Test file for the BungieBoggleTool.
-- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\dictionarytests.cs">dictionarytests.cs</a>**: Unit Test file for the Dictionary.
-- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\bogglegridtests.cs">bogglegridtests.cs</a>**: Unit Test file for the BoggleGrid.
-- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\lettertests.cs">lettertests.cs</a>**: Unit Test file for the Letter.
-- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\coordinatetests.cs">coordinatetests.cs</a>**: Unit Test file for the Coordinate.
-- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\prefixstacksettests.cs">prefixstacksettests.cs</a>**: Unit Test file for the PrefixStackSet.
-- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\resources.cs">resources.cs</a>**: File contain file paths.  Update the resource full path to your machine to get the grid tests to run.  Can also generate a grid file of provided dimensions.  Set GENERATE_GRID to 'true' and set the desired dimensions.
+- **<a href="../bungieboggletoolunittests/BungieBoggleToolTests.cs">BungieBoggleToolTests.cs</a>**: Unit Test file for the BungieBoggleTool.
+- **<a href="../bungieboggletoolunittests/DictionaryTests.cs">DictionaryTests.cs</a>**: Unit Test file for the Dictionary.
+- **<a href="../bungieboggletoolunittests/BoggleGridTests.cs">BoggleGridTests.cs</a>**: Unit Test file for the BoggleGrid.
+- **<a href="../bungieboggletoolunittests/LetterTests.cs">LetterTests.cs</a>**: Unit Test file for the Letter.
+- **<a href="../bungieboggletoolunittests/CoordinateTests.cs">CoordinateTests.cs</a>**: Unit Test file for the Coordinate.
+- **<a href="../bungieboggletoolunittests/PrefixStackSetTests.cs">PrefixStackSetTests.cs</a>**: Unit Test file for the PrefixStackSet.
+- **<a href="../bungieboggletoolunittests/Resources.cs">Resources.cs</a>**: File contain file paths.  Update the resource full path to your machine to get the grid tests to run.  Can also generate a grid file of provided dimensions.  Set GENERATE_GRID to 'true' and set the desired dimensions.
 
 ###Summary
 Each class has a set of unit tests covering basic functionality as well as scenarios.  BungieBoggleToolTests contains a set of tests that verify multiple grids against solution files.  The solution files the format of gridFileName + "Solution" + Resource.FILE_EXTENSION.
@@ -125,22 +125,22 @@ where **n** is the number of words.  Words should be delimited by new lines.  In
 ###Test Cases
 (Note: '#' denotes a 'Qu' block.  Solutions are based on ospd.txt)
 
-- **<a href="resources/bogglegrid1.txt">bogglegrid1.txt</a>**: Initial 3x3 grid provided by Bungie.
+- **<a href="Resources/boggleGrid1.txt">boggleGrid1.txt</a>**: Initial 3x3 grid provided by Bungie.
 
     yox  
     rba  
     ved  
 
-    <a href="resources/bogglegrid1solution.txt">bogglegrid1solution.txt</a>
+    <a href="Resources/boggleGrid1Solution.txt">boggleGrid1Solution.txt</a>
 
 - **<a href="resources/bogglegrid2.txt">bogglegrid2.txt</a>**: Simple 2x2 grid.
 
     CO  
     AT  
 
-    <a href="resources/bogglegrid2solution.txt">bogglegrid2solution.txt</a>
+    <a href="Resources/boggleGrid2Solution.txt">boggleGrid2Solution.txt</a>
 
-- **<a href="resources/gbogglegrid0.txt">gbogglegrid0.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
+- **<a href="Resources/gBoggleGrid0.txt">gBoggleGrid0.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
 
     plrntp  
     lnprce  
@@ -149,9 +149,9 @@ where **n** is the number of words.  Words should be delimited by new lines.  In
     tccmmw  
     pekqwb  
 
-    <a href="resources/gbogglegrid0solution.txt">gbogglegrid0solution.txt</a>
+    <a href="Resources/gBoggleGrid0Solution.txt">gBoggleGrid0Solution.txt</a>
 
-- **<a href="resources/gbogglegrid1.txt">gbogglegrid1.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
+- **<a href="Resources/gBoggleGrid1.txt">gBoggleGrid1.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
 
     fbhdjf  
     bdfrtv  
@@ -160,9 +160,9 @@ where **n** is the number of words.  Words should be delimited by new lines.  In
     jttccm  
     fvagms  
 
-    <a href="resources/gbogglegrid1solution.txt">gbogglegrid1solution.txt</a>
+    <a href="Resources/gBoggleGrid1Solution.txt">gBoggleGrid1Solution.txt</a>
 
-- **<a href="resources/gbogglegrid2.txt">gbogglegrid2.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
+- **<a href="Resources/gBoggleGrid2.txt">gBoggleGrid2.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
 
     cxavzt  
     xvtrpn  
@@ -171,9 +171,9 @@ where **n** is the number of words.  Words should be delimited by new lines.  In
     zpffww  
     tnhbwg  
 
-    <a href="resources/gbogglegrid2solution.txt">gbogglegrid2solution.txt</a>
+    <a href="Resources/gBoggleGrid2Solution.txt">gBoggleGrid2Solution.txt</a>
 
-- **<a href="resources/gbogglegrid3.txt">gbogglegrid3.txt</a>**: 10x10 grid randomly generated by BoggleGrid.Generate(10, 10) and solved by [The Word Solver](http://www.wordsolver.co.uk/).
+- **<a href="Resources/gBoggleGrid3.txt">gBoggleGrid3.txt</a>**: 10x10 grid randomly generated by BoggleGrid.Generate(10, 10) and solved by [The Word Solver](http://www.wordsolver.co.uk/).
 
     ezkeicgaez  
     gecazxvtrp  
@@ -186,4 +186,4 @@ where **n** is the number of words.  Words should be delimited by new lines.  In
     erd#mzlhug  
     zpfmctj#gx  
 
-    <a href="resources/gbogglegrid3solution.txt">gbogglegrid3solution.txt</a>
+    <a href="Resources/gBoggleGrid3Solution.txt">gBoggleGrid3Solution.txt</a>
