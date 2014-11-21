@@ -155,6 +155,16 @@ namespace BungieBoggleTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap BungieBoggleTool {
+            get {
+                object obj = ResourceManager.GetObject("BungieBoggleTool", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 6
         ///6
         ///plrntp
@@ -338,7 +348,6 @@ namespace BungieBoggleTool.Properties {
         ///ear
         ///earl
         ///eat
-        ///eek
         ///eke
         ///era
         ///frat

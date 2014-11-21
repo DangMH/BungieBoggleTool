@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,6 +66,7 @@
     <None Include="Resources\boggleGrid2.txt" />
     <None Include="Resources\boggleGrid1Solution.txt" />
     <Content Include="Resources\boggleGrid2Solution.txt" />
+    <None Include="Resources\BungieBoggleTool.JPG" />
     <Content Include="Resources\gBoggleGrid0.txt" />
     <None Include="Resources\gBoggleGrid0Solution.txt" />
     <Content Include="Resources\gBoggleGrid1.txt" />
