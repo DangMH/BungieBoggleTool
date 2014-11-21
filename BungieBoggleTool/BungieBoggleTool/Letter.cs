@@ -62,18 +62,28 @@ namespace BungieBoggleTool
         }
 
         /// <summary>
-        /// Default constructor.  Generates a random Letter
+        /// Default constructor.  Generates a random Letter;
         /// </summary>
         public Letter()
+            : this((int)DateTime.Now.Ticks)
         {
-            int seed = (new Random((int)DateTime.Now.Ticks & 0x0000FFFF)).Next() % numSymbols;
 
-            if (26 > seed)
+        }
+
+        /// <summary>
+        /// Generates a randm Letter with the given seed;
+        /// </summary>
+        /// <param name="seed">Seed for random number generator.</param>
+        public Letter(int seed)
+        {
+            int mSeed = new Random(seed).Next() % numSymbols;
+
+            if (26 > mSeed)
             {
-                symbol = (char)('a' + seed);
+                symbol = (char)('a' + mSeed);
                 letters = symbol.ToString();
             }
-            else if (26 == seed)
+            else if (26 == mSeed)
             {
                 symbol = '#';
                 letters = "Qu";

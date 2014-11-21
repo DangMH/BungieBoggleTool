@@ -79,7 +79,7 @@ namespace BungieBoggleTool
 
             while (null != (line = dictionaryFile.ReadLine()))
             {
-                line = line.ToLower();
+                line = line.ToLower().Trim();
                 wordPossible = true;
 
                 // Check word against set of unique letters found in the grid

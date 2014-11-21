@@ -65,6 +65,14 @@
     <None Include="Resources\boggleGrid2.txt" />
     <None Include="Resources\boggleGrid1Solution.txt" />
     <Content Include="Resources\boggleGrid2Solution.txt" />
+    <Content Include="Resources\gBoggleGrid0.txt" />
+    <None Include="Resources\gBoggleGrid0Solution.txt" />
+    <Content Include="Resources\gBoggleGrid1.txt" />
+    <None Include="Resources\gBoggleGrid1Solution.txt" />
+    <None Include="Resources\gBoggleGrid2.txt" />
+    <None Include="Resources\gBoggleGrid2Solution.txt" />
+    <Content Include="Resources\gBoggleGrid3.txt" />
+    <None Include="Resources\gBoggleGrid3Solution.txt" />
     <Content Include="Resources\TWL_2006_LENGTH.txt" />
     <Content Include="Resources\sowpods.txt" />
     <None Include="BungieBoggleTool.cd" />

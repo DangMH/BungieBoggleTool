@@ -66,4 +66,4 @@ international characters.
 
 TESTING
 ----------------
-*TBD*
+http://www.hanginghyena.com/solvers/6x6-boggle-solver

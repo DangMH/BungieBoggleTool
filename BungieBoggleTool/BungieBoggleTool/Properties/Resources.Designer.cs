@@ -93,7 +93,29 @@ namespace BungieBoggleTool.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to bred
+        ///yore
+        ///byre
+        ///abed
+        ///oread
+        ///bore
+        ///orby
+        ///robed
+        ///broad
+        ///byroad
+        ///robe
+        ///bored
+        ///derby
+        ///bade
+        ///aero
+        ///read
+        ///orbed
+        ///verb
+        ///aery
+        ///bead
+        ///bread
+        ///very
+        ///road.
         /// </summary>
         public static string boggleGrid1Solution {
             get {
@@ -119,6 +141,254 @@ namespace BungieBoggleTool.Properties {
         public static string BOGGLEGRID2_FILEPATH {
             get {
                 return ResourceManager.GetString("BOGGLEGRID2_FILEPATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to coat
+        ///taco.
+        /// </summary>
+        public static string boggleGrid2Solution {
+            get {
+                return ResourceManager.GetString("boggleGrid2Solution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6
+        ///6
+        ///plrntp
+        ///lnprce
+        ///rpxeck
+        ///nreimq
+        ///tccmmw
+        ///pekqwb
+        ///.
+        /// </summary>
+        public static string gBoggleGrid0 {
+            get {
+                return ResourceManager.GetString("gBoggleGrid0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to premier
+        ///precept
+        ///percept
+        ///premix
+        ///expect
+        ///expert
+        ///premie
+        ///recept
+        ///mixer
+        ///exert
+        ///mimer
+        ///cerci
+        ///creep
+        ///cimex
+        ///emmer
+        ///remix
+        ///prex
+        ///rep
+        ///rec
+        ///ick
+        ///ice
+        ///mix
+        ///rex
+        ///rei
+        ///peck
+        ///reck
+        ///mim
+        ///cee
+        ///exec
+        ///tree
+        ///pert
+        ///rem
+        ///repp
+        ///per
+        ///mick
+        ///cep
+        ///peer
+        ///mice
+        ///pee
+        ///kep
+        ///peep
+        ///kept
+        ///err
+        ///emic
+        ///pet
+        ///pree
+        ///mime
+        ///ern
+        ///ree.
+        /// </summary>
+        public static string gBoggleGrid0Solution {
+            get {
+                return ResourceManager.GetString("gBoggleGrid0Solution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6
+        ///6
+        ///fbhdjf
+        ///bdfrtv
+        ///hfnvta
+        ///drvzcg
+        ///jttccm
+        ///fvagms
+        ///.
+        /// </summary>
+        public static string gBoggleGrid1 {
+            get {
+                return ResourceManager.GetString("gBoggleGrid1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to cat
+        ///tat
+        ///vat
+        ///act
+        ///vac
+        ///gat
+        ///tact
+        ///tav
+        ///tag.
+        /// </summary>
+        public static string gBoggleGrid1Solution {
+            get {
+                return ResourceManager.GetString("gBoggleGrid1Solution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 6
+        ///6
+        ///cxavzt
+        ///xvtrpn
+        ///atvnfh
+        ///vrnjfb
+        ///zpffww
+        ///tnhbwg
+        ///.
+        /// </summary>
+        public static string gBoggleGrid2 {
+            get {
+                return ResourceManager.GetString("gBoggleGrid2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to attar
+        ///att
+        ///tarn
+        ///art
+        ///prat
+        ///tar
+        ///tax
+        ///rat
+        ///frat
+        ///vat
+        ///tav
+        ///rax
+        ///ava
+        ///arf
+        ///var
+        ///vav
+        ///tarp.
+        /// </summary>
+        public static string gBoggleGrid2Solution {
+            get {
+                return ResourceManager.GetString("gBoggleGrid2Solution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 10
+        ///10
+        ///ezkeicgaez
+        ///gecazxvtrp
+        ///kcexzrjldf
+        ///eaxtplhd#m
+        ///izzpffwmmc
+        ///cxrlf#kezt
+        ///gvjhwkixlj
+        ///atldmexph#
+        ///erd#mzlhug
+        ///zpfmctj#gx
+        ///.
+        /// </summary>
+        public static string gBoggleGrid3 {
+            get {
+                return ResourceManager.GetString("gBoggleGrid3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ace
+        ///are
+        ///art
+        ///ate
+        ///axe
+        ///cake
+        ///drag
+        ///drat
+        ///dwelt
+        ///ear
+        ///earl
+        ///eat
+        ///eek
+        ///eke
+        ///era
+        ///frat
+        ///fret
+        ///gate
+        ///gee
+        ///geek
+        ///hmm
+        ///hug
+        ///huh
+        ///keg
+        ///kelp
+        ///kike
+        ///kip
+        ///lewd
+        ///melt
+        ///mew
+        ///pea
+        ///pear
+        ///pearl
+        ///peat
+        ///per
+        ///pert
+        ///pet
+        ///pie
+        ///pike
+        ///pix
+        ///pixel
+        ///prat
+        ///prate
+        ///pug
+        ///quip
+        ///rag
+        ///rat
+        ///rate
+        ///rep
+        ///tag
+        ///tar
+        ///tarp
+        ///tea
+        ///teak
+        ///tear
+        ///tee
+        ///ugh
+        ///vat
+        ///welt.
+        /// </summary>
+        public static string gBoggleGrid3Solution {
+            get {
+                return ResourceManager.GetString("gBoggleGrid3Solution", resourceCulture);
             }
         }
         

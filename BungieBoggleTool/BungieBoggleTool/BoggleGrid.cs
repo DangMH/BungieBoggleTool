@@ -195,14 +195,17 @@ namespace BungieBoggleTool
         {
             Letter letter;
 
-            letters = new Dictionary<Coordinate, Letter>(numRows * numCols);
+            NumRows = numRows;
+            NumCols = numCols;
+
+            letters = new Dictionary<Coordinate, Letter>(NumRows * NumCols);
             uniqueLetters = new HashSet<char>();
 
-            for (int i = 0; i < numRows; ++i)
+            for (int i = 0; i < NumRows; ++i)
             {
-                for (int j = 0; j < numCols; ++j)
+                for (int j = 0; j < NumCols; ++j)
                 {
-                    letters.Add(new Coordinate(i, j), letter = new Letter());
+                    letters.Add(new Coordinate(i, j), letter = new Letter((int)DateTime.Now.Ticks + (i + 1) * (j + 1)));
                     foreach (char c in letter.ToString())
                     {
                         uniqueLetters.Add(c);
