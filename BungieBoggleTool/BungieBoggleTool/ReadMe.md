@@ -35,12 +35,6 @@ SOLUTION
 - **Letter.cs**: Class representing the Boggle Block.
 - **Coordinate.cs**: Class representing a coordinate.
 - **PrefixStackSet.cs**: Class that contains Stack and Set functionality and tracks current prefix.  Used in the iterative DFS algorithm.
-- **BungieBoggleToolTests.cs**: Unit Test file for the BungieBoggleTool.
-- **DictionaryTests.cs**: Unit Test file for the Dictionary.
-- **BoggleGridTests.cs**: Unit Test file for the BoggleGrid.
-- **LetterTests.cs**: Unit Test file for the Letter.
-- **CoordinateTests.cs**: Unit Test file for the Coordinate.
-- **PrefixStackSetTests.cs**: Unit Test file for the PrefixStackSet.
 
 ###Approach
 Essentially the problem has two parts:
@@ -66,4 +60,17 @@ international characters.
 
 TESTING
 ----------------
+###Files
+- **BungieBoggleToolTests.cs**: Unit Test file for the BungieBoggleTool.
+- **DictionaryTests.cs**: Unit Test file for the Dictionary.
+- **BoggleGridTests.cs**: Unit Test file for the BoggleGrid.
+- **LetterTests.cs**: Unit Test file for the Letter.
+- **CoordinateTests.cs**: Unit Test file for the Coordinate.
+- **PrefixStackSetTests.cs**: Unit Test file for the PrefixStackSet.
+- **Resources.cs**
+
+###Summary
+Each class has a set of unit tests covering basic functionality as well as scenarios.  BungieBoggleTool
+
+http://www.wordsolver.co.uk/
 http://www.hanginghyena.com/solvers/6x6-boggle-solver

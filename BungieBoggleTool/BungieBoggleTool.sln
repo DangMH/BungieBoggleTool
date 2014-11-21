@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BungieBoggleTool", "BungieBoggleTool\BungieBoggleTool.csproj", "{A05E4A09-FB91-4667-A81F-91E402D05064}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BungieBoggleToolUnitTests", "CoordinateTests\BungieBoggleToolUnitTests.csproj", "{02684A66-1711-4502-9584-778662055509}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BungieBoggleToolUnitTests", "BungieBoggleToolUnitTests\BungieBoggleToolUnitTests.csproj", "{02684A66-1711-4502-9584-778662055509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
