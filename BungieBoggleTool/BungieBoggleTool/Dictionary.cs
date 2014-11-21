@@ -130,5 +130,20 @@ namespace BungieBoggleTool
         {
             return prefixes.Contains(prefix.ToLower());
         }
+
+        /// <summary>
+        /// String representation of the dictionary
+        /// </summary>
+        public override string ToString()
+        {
+            string ret = "";
+
+            foreach (string str in words)
+            {
+                ret += str + "\n";
+            }
+
+            return ret;
+        }
     }
 }

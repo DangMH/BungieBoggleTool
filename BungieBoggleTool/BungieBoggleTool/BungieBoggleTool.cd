@@ -1,43 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="BungieBoggleTool.Dictionary">
-    <Position X="3.75" Y="4.25" Width="2" />
+    <Position X="1.25" Y="5.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>CAAAAAEAAAAAAAAAAAIAAAAQAAAAAAAAACAAAAAQAAA=</HashCode>
+      <HashCode>CAAAAAEAAAAAAAAEAAIAAAAQAAAAAAAAACAAAAAQAAA=</HashCode>
       <FileName>Dictionary.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BungieBoggleTool.BoggleGrid">
-    <Position X="6" Y="4.25" Width="2.25" />
+    <Position X="3.75" Y="5.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>CQAAAAAEAAAAAABMgAAAAAAEgAAAAAQIAAAAAAAAEAA=</HashCode>
       <FileName>BoggleGrid.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BungieBoggleTool.BungieBoggleTool">
-    <Position X="3.75" Y="0.75" Width="2" />
+    <Position X="1.25" Y="0.75" Width="2.25" />
+    <NestedTypes>
+      <Enum Name="BungieBoggleTool.BungieBoggleTool.COMMANDS" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BungieBoggleTool.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AABAAAAUAiAAAAAYEAACAAAgIIAIAAAAAgAABABAACA=</HashCode>
       <FileName>BungieBoggleTool.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BungieBoggleTool.Letter">
-    <Position X="8.5" Y="4.25" Width="2.25" />
+    <Position X="6.25" Y="5.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAEgAAAAAAAAACAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Letter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BungieBoggleTool.Coordinate">
-    <Position X="6" Y="0.75" Width="2.25" />
+  <Class Name="BungieBoggleTool.Coordinate" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAABgAAAAYAA=</HashCode>
       <FileName>Coordinate.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="BungieBoggleTool.PrefixStackSet">
-    <Position X="8.5" Y="0.75" Width="2.25" />
+    <Position X="6.25" Y="0.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAEAAAEAAAAAAQAAACAAgAAAAgAAAAQCAA=</HashCode>
       <FileName>PrefixStackSet.cs</FileName>

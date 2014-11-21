@@ -13,61 +13,276 @@ namespace BungieBoggleTool
     /// </summary>
     public class BungieBoggleTool
     {
+        private enum COMMANDS
+        {
+            EXIT = 0,
+            LOAD_GRID = 1,
+            PRINT_GRID_TO_FILE = 2,
+            LOAD_DICTIONARY = 3,
+            PRINT_DICTIONARY_TO_FILE = 4,
+            PRINT_GRID = 5,
+            PRINT_DICTIONARY = 6,
+            FIND_ALL_WORDS = 7,
+            PRINT_SOLUTION_TO_FILE = 8
+        }
+
+        private static StreamReader dictionaryFileStream = null;
+        private static StreamReader gridFileStream = null;
+        private static BoggleGrid toolBoggleGrid = new BoggleGrid();
+        private static Dictionary toolDictionary = new Dictionary();
+        private static HashSet<string> foundWords = new HashSet<string>();
+
         /// <summary>
-        /// Main program that runs the console application.
+        /// Main Console Application method that runs the console application.
         /// </summary>
         /// <param name="args">
-        /// Application arguments:
-        /// 1. Dictionary file name
-        /// 2. Grid file name
-        /// If no grid file name is designnated, a random grid will be generated.
+        /// Application arguments, not used
         /// </param>
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            StreamReader dictionaryFileStream = null;
-            StreamReader gridFileStream = null;
-            BoggleGrid toolBoggleGrid = null;
-            Dictionary toolDictionary = null;
+            Console.WriteLine("BUNGIE BOGGLE SOLVER\n");
 
-            if (args.Length == 0)
+            while (true)
             {
-                Console.WriteLine("ERROR: Not enough arguments.  Please enter full dictionary file path and then full grid file path.");
+                PrintMenu();
+
+                string line = ReadLine();
+                int command = -1;
+
+                if (!Int32.TryParse(line, out command))
+                {
+                    Console.WriteLine("ERROR: Unrecognized command");
+                    continue;
+                }
+
+                switch ((COMMANDS)command)
+                {
+                    case COMMANDS.EXIT:
+                        Console.WriteLine("PRESS ANY KEY TO EXIT\n");
+                        ReadLine();
+                        return;
+                    case COMMANDS.LOAD_DICTIONARY:
+                        LoadDictionary();
+                        break;
+                    case COMMANDS.LOAD_GRID:
+                        LoadGrid();
+                        break;
+                    case COMMANDS.PRINT_DICTIONARY:
+                        PrintDictionary();
+                        break;
+                    case COMMANDS.PRINT_GRID:
+                        PrintGrid();
+                        break;
+                    case COMMANDS.FIND_ALL_WORDS:
+                        FindAllWords();
+                        break;
+                    case COMMANDS.PRINT_GRID_TO_FILE:
+                        PrintGridToFile();
+                        break;
+                    case COMMANDS.PRINT_DICTIONARY_TO_FILE:
+                        PrintDictionaryToFile();
+                        break;
+                    case COMMANDS.PRINT_SOLUTION_TO_FILE:
+                        PrintFoundWordsToFile();
+                        break;
+                    default:
+                        Console.WriteLine("ERROR: Unrecognized command");
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Console Application method that loads the dictionary.
+        /// </summary>
+        public static void PrintMenu()
+        {
+            Console.WriteLine("--------------------------------\n");
+            foreach (COMMANDS command in Enum.GetValues(typeof(COMMANDS)).Cast<COMMANDS>())
+            {
+                Console.WriteLine(command.ToString("G") + " = " + command.ToString("D"));
+            }
+            Console.WriteLine("--------------------------------\n");
+        }
+
+        /// <summary>
+        /// Console Application method that loads the dictionary.
+        /// </summary>
+        public static void LoadDictionary()
+        {
+            Console.WriteLine("Enter full dictionary file path: ");
+
+            try
+            {
+                dictionaryFileStream = new StreamReader(ReadLine());
+            }
+            catch (FileNotFoundException fnfe)
+            {
+                Console.WriteLine(fnfe.ToString() + "\n"
+                    + "\tDefault dictionary will be used");
+                dictionaryFileStream = null;
+                toolDictionary = new Dictionary();
             }
 
-            if (args.Length >= 1)
+            Console.Write("Parse dictionary with currently loaded grid? (Y/N): ");
+
+            if ("y" == ReadLine().Trim().ToLower())
             {
-                try
+                toolDictionary = new Dictionary(dictionaryFileStream, toolBoggleGrid);
+            }
+            else
+            {
+                Console.Write("Load a new grid to parse dictionary? (Y/N): ");
+                if ("y" == ReadLine().Trim().ToLower())
                 {
-                    dictionaryFileStream = new StreamReader(args[0]);
+                    LoadGrid();
+                    toolDictionary = new Dictionary(dictionaryFileStream, toolBoggleGrid);
                 }
-                catch (FileNotFoundException fnfe)
+                else
                 {
-                    Console.WriteLine(fnfe.ToString());
-                    return;
+                    toolDictionary = new Dictionary(dictionaryFileStream, null);
                 }
             }
 
-            if (args.Length >= 2)
+            Console.Write("Print loaded dictionary? (Y/N): ");
+
+            if ("y" == ReadLine().Trim().ToLower())
             {
-                try
-                {
-                    gridFileStream = new StreamReader(args[1]);
-                }
-                catch (FileNotFoundException fnfe)
-                {
-                    Console.WriteLine(fnfe.ToString());
-                    return;
-                }
+                PrintDictionary();
+            }
+        }
+
+        /// <summary>
+        /// Console Application method that prints the loaded dictionary.
+        /// </summary>
+        public static void PrintDictionary()
+        {
+            Console.WriteLine("\nDictionary generated: \n"
+                + toolDictionary.ToString());
+        }
+
+        /// <summary>
+        /// Console Application method that prints the loaded dictionary to a file.
+        /// </summary>
+        public static void PrintDictionaryToFile()
+        {
+            Console.WriteLine("\nInput full file path for dictionary: \n");
+
+            try
+            {
+                StreamWriter sw = new StreamWriter(ReadLine());
+                sw.Write(toolDictionary.ToString());
+                sw.Close();
+
+                Console.WriteLine( "File Created Successfully" );
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Console Application method that loads the grid.
+        /// </summary>
+        public static void LoadGrid()
+        {
+            Console.WriteLine("\nEnter full grid file path: ");
+            try
+            {
+                gridFileStream = new StreamReader(ReadLine());
+            }
+            catch (FileNotFoundException fnfe)
+            {
+                Console.WriteLine(fnfe.ToString() + "\n"
+                    + "\tDefault grid will be used");
+                gridFileStream = null;
+                toolBoggleGrid = new BoggleGrid();
             }
 
             toolBoggleGrid = new BoggleGrid(gridFileStream);
-            toolDictionary = new Dictionary(dictionaryFileStream, toolBoggleGrid);
 
-            Console.WriteLine("The grid contains the following words: ");
-            foreach (string str in FindAllWords(toolDictionary, toolBoggleGrid))
+            Console.Write("Print loaded grid? (Y/N): ");
+
+            if ("y" == ReadLine().Trim().ToLower())
+            {
+                PrintGrid();
+            }
+        }
+
+        /// <summary>
+        /// Console Application method that prints the loaded grid.
+        /// </summary>
+        public static void PrintGrid()
+        {
+            Console.WriteLine("\nGrid generated: \n"
+                + toolBoggleGrid.ToString());
+        }
+
+        /// <summary>
+        /// Console Application method that prints the loaded grid to a file.
+        /// </summary>
+        public static void PrintGridToFile()
+        {
+            Console.WriteLine("\nInput full file path for grid: \n");
+
+            try
+            {
+                StreamWriter sw = new StreamWriter(ReadLine());
+                sw.Write(toolBoggleGrid.ToString());
+                sw.Close();
+
+                Console.WriteLine("File Created Successfully");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Console Application method that find all the words.
+        /// </summary>
+        public static void FindAllWords()
+        {
+            Console.WriteLine("\nThe grid contains the following words: ");
+            foreach (string str in foundWords = FindAllWords(toolDictionary, toolBoggleGrid))
             {
                 Console.WriteLine(str);
             }
+        }
+
+        /// <summary>
+        /// Console Application method that prints the latest found words to a file.
+        /// </summary>
+        public static void PrintFoundWordsToFile()
+        {
+            Console.WriteLine("\nInput full file path for latest found words: \n");
+
+            try
+            {
+                StreamWriter sw = new StreamWriter(ReadLine());
+                foreach (string str in foundWords)
+                {
+                    sw.WriteLine(str);
+                }
+                sw.Close();
+
+                Console.WriteLine("File Created Successfully");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Console Application to read an input.
+        /// </summary>
+        public static string ReadLine()
+        {
+            Console.Write("> ");
+            return Console.ReadLine();
         }
 
         /// <summary>
