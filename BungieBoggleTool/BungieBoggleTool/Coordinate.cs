@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace BungieBoggleTool
 {
-    class Coordinate : IEquatable<Coordinate>
+    /// <summary>
+    /// Class representing an x and a y coordinate.
+    /// </summary>
+    public class Coordinate : IEquatable<Coordinate>
     {
         /// <summary>
         /// X coordinate.
         /// </summary>
-        public int x
+        private int x;
+
+        /// <summary>
+        /// X coordinate.
+        /// </summary>
+        public int X
         {
             get
             {
@@ -19,14 +27,19 @@ namespace BungieBoggleTool
             }
             set
             {
-                x = value;
+                this.x = value;
             }
         }
 
         /// <summary>
         /// Y coordinate.
         /// </summary>
-        public int y
+        private int y;
+
+        /// <summary>
+        /// Y coordinate.
+        /// </summary>
+        public int Y
         {
             get
             {
@@ -34,7 +47,7 @@ namespace BungieBoggleTool
             }
             set
             {
-                y = value;
+                this.y = value;
             }
         }
 
@@ -45,8 +58,8 @@ namespace BungieBoggleTool
         /// <param name="y">Y coordinate.</param>
         public Coordinate(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
 
         /// <summary>
@@ -57,6 +70,10 @@ namespace BungieBoggleTool
         {
         }
 
+        /// <summary>
+        /// Equates two coordinates based on x and y value.
+        /// </summary>
+        /// <param name="obj">Coordinate to compare against.</param>
         public override bool Equals(System.Object obj)
         {
             Coordinate coordinate = obj as Coordinate;
@@ -64,19 +81,26 @@ namespace BungieBoggleTool
             return Equals(coordinate);
         }
 
-        public bool Equals( Coordinate coordinate )
+        /// <summary>
+        /// Equates two coordinates based on x and y value.
+        /// </summary>
+        /// <param name="coordinate">Coordinate to compare against.</param>
+        public bool Equals(Coordinate coordinate)
         {
-            if( null == (object)coordinate )
+            if (null == (object)coordinate)
             {
                 return false;
             }
 
-            return x == coordinate.x && y == coordinate.y;
+            return X == coordinate.X && Y == coordinate.Y;
         }
 
+        /// <summary>
+        /// Hash is derived from x and y coordinates.
+        /// </summary>
         public override int GetHashCode()
         {
-            return x * y;
+            return X * Y;
         }
     }
 }

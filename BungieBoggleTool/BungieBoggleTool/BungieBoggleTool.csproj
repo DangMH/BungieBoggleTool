@@ -50,14 +50,31 @@
     <Compile Include="Letter.cs" />
     <Compile Include="PrefixStackSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sowpods.txt" />
+    <None Include="Resources\boggleGrid1.txt" />
+    <None Include="Resources\ospd.txt" />
+    <None Include="Resources\boggleGrid2.txt" />
+    <None Include="Resources\boggleGrid1Solution.txt" />
+    <Content Include="Resources\boggleGrid2Solution.txt" />
+    <Content Include="Resources\TWL_2006_LENGTH.txt" />
+    <Content Include="Resources\sowpods.txt" />
     <None Include="BungieBoggleTool.cd" />
     <None Include="ReadMe.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

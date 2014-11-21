@@ -8,52 +8,82 @@ using System.IO;
 
 namespace BungieBoggleTool
 {
-    class BungieBoggleTool
+    /// <summary>
+    /// Console Application that finds all words within a Boggle Grid.
+    /// </summary>
+    public class BungieBoggleTool
     {
-        public Dictionary dictionary
-        {
-            get
-            {
-                return dictionary;
-            }
-            set
-            {
-            }
-        }
-
-        public BoggleGrid grid
-        {
-            get
-            {
-                return grid;
-            }
-            set
-            {
-            }
-        }
-
+        /// <summary>
+        /// Main program that runs the console application.
+        /// </summary>
+        /// <param name="args">
+        /// Application arguments:
+        /// 1. Dictionary file name
+        /// 2. Grid file name
+        /// If no grid file name is designnated, a random grid will be generated.
+        /// </param>
         static void Main(string[] args)
         {
+            StreamReader dictionaryFileStream = null;
+            StreamReader gridFileStream = null;
+            BoggleGrid toolBoggleGrid = null;
+            Dictionary toolDictionary = null;
 
+            if (args.Length == 0)
+            {
+                Console.WriteLine("ERROR: Not enough arguments.  Please enter full dictionary file path and then full grid file path.");
+            }
+
+            if (args.Length >= 1)
+            {
+                try
+                {
+                    dictionaryFileStream = new StreamReader(args[0]);
+                }
+                catch (FileNotFoundException fnfe)
+                {
+                    Console.WriteLine(fnfe.ToString());
+                    return;
+                }
+            }
+
+            if (args.Length >= 2)
+            {
+                try
+                {
+                    gridFileStream = new StreamReader(args[1]);
+                }
+                catch (FileNotFoundException fnfe)
+                {
+                    Console.WriteLine(fnfe.ToString());
+                    return;
+                }
+            }
+
+            toolBoggleGrid = new BoggleGrid(gridFileStream);
+            toolDictionary = new Dictionary(dictionaryFileStream, toolBoggleGrid);
+
+            Console.WriteLine("The grid contains the following words: ");
+            foreach (string str in FindAllWords(toolDictionary, toolBoggleGrid))
+            {
+                Console.WriteLine(str);
+            }
         }
 
         /// <summary>
         /// Returns a set of all possible words found within a BoggleGrid according to the given dictionary
         /// </summary>
-        /// <param name="boggleGridFile">File containing the BoggleGrid.</param>
-        /// <param name="dictionaryFile">File containing the list of possible words.</param>
-        public HashSet<string> FindAllWords(StreamReader dictionaryFile, StreamReader boggleGridFile)
+        /// <param name="boggleGrid">File containing the BoggleGrid.</param>
+        /// <param name="dictionary">File containing the list of possible words.</param>
+        public static HashSet<string> FindAllWords(Dictionary dictionary, BoggleGrid boggleGrid)
         {
             HashSet<string> words = new HashSet<string>();
 
-            grid = new BoggleGrid(boggleGridFile);
-            dictionary = new Dictionary(dictionaryFile, grid);
-
-            for (int i = 0; i < grid.numRows; ++i)
+            for (int i = 0; i < boggleGrid.NumRows; ++i)
             {
-                for (int j = 0; j < grid.numCols; ++j)
+                for (int j = 0; j < boggleGrid.NumCols; ++j)
                 {
-                    words.Union(DoDFS(grid, dictionary, i, j));
+                    words.UnionWith(DoDFS(boggleGrid, dictionary, i, j));
                 }
             }
 
@@ -63,7 +93,7 @@ namespace BungieBoggleTool
         /// <summary>
         /// Recursive DFS function to search grid for all possible strings smartly.
         /// </summary>
-        private HashSet<string> DoDFS(BoggleGrid grid, Dictionary dictionary, int i, int j)
+        private static HashSet<string> DoDFS(BoggleGrid grid, Dictionary dictionary, int i, int j)
         {
             HashSet<string> words = new HashSet<string>();
             Stack<PrefixStackSet> prefixes = new Stack<PrefixStackSet>();
@@ -80,7 +110,7 @@ namespace BungieBoggleTool
 
             // Seed the search
             currentNode = new PrefixStackSet();
-            tempCoordinate = new Coordinate(0, 0);
+            tempCoordinate = new Coordinate(i, j);
             currentNode.Push(Tuple.Create<Coordinate, Letter>(tempCoordinate, grid.Get(tempCoordinate)));
             prefixes.Push(currentNode);
 
@@ -93,7 +123,7 @@ namespace BungieBoggleTool
                 // Add word if word is found
                 if (dictionary.Contains(currentNode.ToString()))
                 {
-                    words.Add(currentNode.ToString());
+                    words.Add(currentNode.ToString().ToLower());
                 }
 
                 // Stop branching if prefix is not found.
@@ -107,12 +137,12 @@ namespace BungieBoggleTool
 
                 foreach (Coordinate df in diff)
                 {
-                    tempCoordinate = new Coordinate(currentNode.Peek().Item1.x + df.x, currentNode.Peek().Item1.y + df.y);
+                    tempCoordinate = new Coordinate(currentNode.Peek().Item1.X + df.X, currentNode.Peek().Item1.Y + df.Y);
 
-                    if ((-1 < tempCoordinate.x)                     // Check boundaries of direction
-                        && (tempCoordinate.x < grid.numRows)
-                        && (-1 < tempCoordinate.y)
-                        && (tempCoordinate.y < grid.numCols)
+                    if ((-1 < tempCoordinate.X)                     // Check boundaries of direction
+                        && (tempCoordinate.X < grid.NumRows)
+                        && (-1 < tempCoordinate.Y)
+                        && (tempCoordinate.Y < grid.NumCols)
                         && !currentNode.Contains(tempCoordinate))   // Check if node has been traversed
                     {
                         // Push in next item

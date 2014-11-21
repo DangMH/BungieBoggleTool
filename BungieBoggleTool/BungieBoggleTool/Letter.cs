@@ -5,7 +5,10 @@ using System.Text;
 
 namespace BungieBoggleTool
 {
-    class Letter
+    /// <summary>
+    /// Class to represent a letter found on a Boggle Block
+    /// </summary>
+    public class Letter
     {
         /// <summary>
         /// Original char representing the block.
@@ -13,9 +16,21 @@ namespace BungieBoggleTool
         private char symbol;
 
         /// <summary>
+        /// Original char representing the block.
+        /// </summary>
+        public char Symbol
+        {
+            get
+            {
+                return symbol;
+            }
+        }
+
+        /// <summary>
         /// Character(s) in the Letter block.
         /// </summary>
         private string letters;
+
         /// <summary>
         /// Number of legal symbols.
         /// </summary>
@@ -27,21 +42,16 @@ namespace BungieBoggleTool
         /// <param name="symbol">Character(s) to Populate the Letter.</param>
         public Letter(char symbol)
         {
-            if ('a' < symbol && symbol < 'z')
+            if ('a' <= symbol && symbol <= 'z'
+                || 'A' <= symbol && symbol <= 'Z')
             {
                 this.symbol = symbol;
-                letters = this.symbol.ToString();
-            }
-            else if ('A' < symbol && symbol < 'Z')
-            {
-                // Convert to lower case
-                this.symbol = (char)(symbol + ('a' - 'A'));
                 letters = this.symbol.ToString();
             }
             else if ('#' == symbol)
             {
                 this.symbol = symbol;
-                letters = "qu";
+                letters = "Qu";
             }
             else
             {
@@ -63,10 +73,10 @@ namespace BungieBoggleTool
                 symbol = (char)('a' + seed);
                 letters = symbol.ToString();
             }
-            else if (27 == seed)
+            else if (26 == seed)
             {
                 symbol = '#';
-                letters = "qu";
+                letters = "Qu";
             }
         }
 

@@ -6,7 +6,10 @@ using System.IO;
 
 namespace BungieBoggleTool
 {
-    class BoggleGrid
+    /// <summary>
+    /// Class representing the Boggle Board.  Can generate random boards.
+    /// </summary>
+    public class BoggleGrid
     {
         /// <summary>
         /// Unique set of letters found inside the boggleGrid.  Used for efficiency in populating a boggleGridFile.
@@ -16,10 +19,13 @@ namespace BungieBoggleTool
         /// Grid of letters.
         /// </summary>
         private Dictionary<Coordinate, Letter> letters;
+
+        private int numRows;
+
         /// <summary>
         /// Number of Rows.
         /// </summary>
-        public int numRows
+        public int NumRows
         {
             get
             {
@@ -27,13 +33,16 @@ namespace BungieBoggleTool
             }
             private set
             {
-                numRows = value;
+                this.numRows = value;
             }
         }
+
+        private int numCols;
+
         /// <summary>
         /// Number of Rows.
         /// </summary>
-        public int numCols
+        public int NumCols
         {
             get
             {
@@ -41,7 +50,7 @@ namespace BungieBoggleTool
             }
             private set
             {
-                numCols = value;
+                this.numCols = value;
             }
         }
 
@@ -77,14 +86,20 @@ namespace BungieBoggleTool
         /// <param name="boggleGridFile">File to Populate the BoggleGrid.</param>
         private void Populate(StreamReader boggleGridFile)
         {
+            if (null == boggleGridFile)
+            {
+                GenerateGrid();
+                return;
+            }
+
             string line = null;
             bool errorOccured = false;
             Letter letter = null;
             int rowsRead = 0,
                 colsRead = 0;
 
-            numRows = 0;
-            numCols = 0;
+            NumRows = 0;
+            NumCols = 0;
 
             do
             {
@@ -96,10 +111,10 @@ namespace BungieBoggleTool
                 }
                 if (errorOccured = !Int32.TryParse(line, out rowsRead))
                 {
-                    Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid row value: " + numRows);
+                    Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid row value: " + NumRows);
                     break;
                 }
-                numRows = rowsRead;
+                NumRows = rowsRead;
 
                 //Second line contains the column value
                 if (errorOccured = (null == (line = boggleGridFile.ReadLine())))
@@ -109,15 +124,15 @@ namespace BungieBoggleTool
                 }
                 if (errorOccured = !Int32.TryParse(line, out colsRead))
                 {
-                    Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid column value: " + numCols);
+                    Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid column value: " + NumCols);
                     break;
                 }
-                numCols = colsRead;
+                NumCols = colsRead;
 
-                letters = new Dictionary<Coordinate, Letter>(numRows * numCols);
+                letters = new Dictionary<Coordinate, Letter>(NumRows * NumCols);
                 uniqueLetters = new HashSet<char>();
 
-                for (int i = 0; i < numRows; ++i)
+                for (int i = 0; i < NumRows; ++i)
                 {
 
                     // Read the ith row
@@ -128,13 +143,13 @@ namespace BungieBoggleTool
                     }
 
                     // Column the incorrect length at row i
-                    if (numCols != line.Length)
+                    if (NumCols != line.Length)
                     {
                         Console.WriteLine("FORMATTING ERROR: Incorrect number of columns at row " + i + ": " + line);
                         break;
                     }
 
-                    for (int j = 0; j < numCols; ++j)
+                    for (int j = 0; j < NumCols; ++j)
                     {
                         // Read the char at the ith column
                         letters.Add(new Coordinate(i, j), letter = new Letter(line[j]));
@@ -202,6 +217,47 @@ namespace BungieBoggleTool
         public void GenerateGrid()
         {
             GenerateGrid(3, 3);
+        }
+
+        /// <summary>
+        /// String representation of the grid for saving onto files
+        /// </summary>
+        public string ToFileString()
+        {
+            string ret = "";
+
+            ret += NumRows + "\r\n";
+            ret += NumCols + "\r\n";
+
+            for (int i = 0; i < numRows; ++i)
+            {
+                for (int j = 0; j < numCols; ++j)
+                {
+                    ret += letters[new Coordinate(i, j)].Symbol;
+                }
+                ret += "\r\n";
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// String representation of the grid
+        /// </summary>
+        public override string ToString()
+        {
+            string ret = "";
+
+            for (int i = 0; i < numRows; ++i)
+            {
+                for (int j = 0; j < numCols; ++j)
+                {
+                    ret += letters[new Coordinate(i, j)] + " ";
+                }
+                ret = ret.Substring(0, ret.Length - 1) + "\n";
+            }
+
+            return ret;
         }
     }
 }

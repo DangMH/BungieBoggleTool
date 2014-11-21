@@ -7,8 +7,16 @@ using System.IO;
 
 namespace BungieBoggleTool
 {
-    class Dictionary
+    /// <summary>
+    /// Class to represent a Dictionary to verify words found in the boggle grid.  Can be parsed according to the uniqueletters found on the grid.
+    /// </summary>
+    public class Dictionary
     {
+        /// <summary>
+        /// Minimum word size for dictionary validation.
+        /// </summary>
+        public static int MIN_WORD_LENGTH = 4;
+
         /// <summary>
         /// Set of words in the dictionary.
         /// </summary>
@@ -71,10 +79,15 @@ namespace BungieBoggleTool
 
             while (null != (line = dictionaryFile.ReadLine()))
             {
+                line = line.ToLower();
                 wordPossible = true;
 
                 // Check word against set of unique letters found in the grid
-                if (null != uniqueLetters)
+                if (MIN_WORD_LENGTH > line.Length)
+                {
+                    wordPossible = false;
+                }
+                else if (null != uniqueLetters)
                 {
                     foreach (char c in line)
                     {
@@ -106,7 +119,7 @@ namespace BungieBoggleTool
         /// <param name="word">Word to be found.</param>
         public bool Contains(string word)
         {
-            return words.Contains(word);
+            return words.Contains(word.ToLower());
         }
 
         /// <summary>
@@ -115,7 +128,7 @@ namespace BungieBoggleTool
         /// <param name="prefix">Prefix to be found.</param>
         public bool ContainsPrefix(string prefix)
         {
-            return prefixes.Contains(prefix);
+            return prefixes.Contains(prefix.ToLower());
         }
     }
 }

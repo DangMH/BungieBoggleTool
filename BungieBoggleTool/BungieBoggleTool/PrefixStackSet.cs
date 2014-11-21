@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BungieBoggleTool
 {
-    class PrefixStackSet
+    /// <summary>
+    /// Class that behaves as a stack, however only contains a unique set of Coordinates.
+    /// </summary>
+    public class PrefixStackSet
     {
         /// <summary>
         /// Set of coordinates.
@@ -22,7 +25,8 @@ namespace BungieBoggleTool
         private string prefix;
 
         /// <summary>
-        /// Parameterized constructor that creates a copy of the prefixStackSet.  Only creates new instances of the Stack, Set and string members, but still references the items in them (excluding the string).
+        /// Parameterized constructor that creates a copy of the prefixStackSet.
+        /// Only creates new instances of the Stack, Set and string members, but still references the items in them (excluding the string).
         /// </summary>
         /// <param name="prefixStackSet">PrefixStackSet to be copied.</param>
         public PrefixStackSet(PrefixStackSet prefixStackSet)
@@ -42,6 +46,22 @@ namespace BungieBoggleTool
             prefix = "";
         }
 
+        /// <summary>
+        /// Size of the stack.
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                return prefixCoordinatesStack.Count;
+            }
+        }
+
+        /// <summary>
+        /// If Coordinate doesn't already exist, push Tuple onto the end of the Stack.
+        /// Returns true if coordinate doesn't already exist and push is successful, else false.
+        /// </summary>
+        /// <param name="block">Block to be pushed onto stack.</param>
         public bool Push(Tuple<Coordinate, Letter> block)
         {
             if (prefixCoordinatesSet.Contains(block.Item1))
@@ -69,7 +89,7 @@ namespace BungieBoggleTool
 
             ret = prefixCoordinatesStack.Pop();
             prefixCoordinatesSet.Remove(ret.Item1);
-            prefix.Substring(0, prefix.Length - ret.Item2.ToString().Length);
+            this.prefix = prefix.Substring(0, prefix.Length - ret.Item2.ToString().Length);
 
             return ret;
         }

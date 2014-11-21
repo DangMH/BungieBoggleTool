@@ -26,20 +26,30 @@ SOLUTION
 ###Files
 
 - **sowpods.txt**: [Europe Scrabble Word List](http://www.freescrabbledictionary.com/sowpods.txt).
+- **TWL\_2006\_LENGTH.txt**: [Scrabble Junction Word List](http://www.scrabblejunction.org/wordlists.htm).
+- **ospd.txt**: [Official Scrabble Players Dictionary](http://www.puzzlers.org/pub/wordlists/ospd.txt).
 - **BungieBoggleTool.cd**: Class diagram of the console application.
 - **BungieBoggleTool.cs**: Main file containing console application.
 - **Dictionary.cs**: Class representing the dictionary list of words to check against.
 - **BoggleGrid.cs**: Class representing the Boggle Grid.
 - **Letter.cs**: Class representing the Boggle Block.
+- **Coordinate.cs**: Class representing a coordinate.
+- **PrefixStackSet.cs**: Class that contains Stack and Set functionality and tracks current prefix.  Used in the iterative DFS algorithm.
+- **BungieBoggleToolTests.cs**: Unit Test file for the BungieBoggleTool.
+- **DictionaryTests.cs**: Unit Test file for the Dictionary.
+- **BoggleGridTests.cs**: Unit Test file for the BoggleGrid.
+- **LetterTests.cs**: Unit Test file for the Letter.
+- **CoordinateTests.cs**: Unit Test file for the Coordinate.
+- **PrefixStackSetTests.cs**: Unit Test file for the PrefixStackSet.
 
 ###Approach
 Essentially the problem has two parts:
 
 1.  **Finding the possible string combinations among the grid.**  
-    For this portion I decided that the best approach would be a *depth-first search*.  Since it is a graph and we cannot double over traversed nodes, *DFS* would be the fastest approach.  *DFS* also allows for failing fast.  If we start a search, every iteration can be treated as a prefix that can be verified against the **Dictionary** (The **Dictionary** will contain the possible prefixes according the the of words as well).
+    For this portion I decided that the best approach would be a *depth-first search*.  Since it is a graph and we cannot double over traversed nodes, *DFS* would be the fastest approach.  *DFS* also allows for failing fast.  If we start a search, every iteration can be treated as a prefix that can be verified against the **Dictionary** (The **Dictionary** will contain the possible prefixes according the the of words as well). At worst case (where all string combinations are legal), the DFS will search the entire graph O(n<sup>3</sup>), where n is the number of elements in the graph. 
 
 2.  **Checking string combinations against a list.**  
-    For this portion I decided to create a **Dictionary** class that will contain a **Set** of *words* and *possible pre-fixes*.  I chose **Set**'s because I do not care about duplicates.  The class also constructs against both the file of words as well as the grid instance, as we only care about *possible words* (we rule out any words that contain letters not found in the grid).
+    For this portion I decided to create a **Dictionary** class that will contain a **Set** of *words* and a **Set** of *possible pre-fixes*.  I chose **Set**'s because I do not care about duplicates.  The class also constructs against both the file of words as well as the grid instance, as we only care about *possible words* (we rule out any words that contain letters not found in the grid).  Constructing the **Dictionary** is O(n), where n is the number of characters in the dictionary file.  Prefix and word lookup are O(1) expected due to the **HashSet** implementation in C#.
 
 ###Pros
 - **Extensible**: Dictionaries can be swapped out by simply changing the file.  Object-oriented design means that different algorithms can be implemented by subclassing the appropriate classes.
