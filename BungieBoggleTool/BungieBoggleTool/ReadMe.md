@@ -72,13 +72,13 @@ TESTING
 Tests were built with Visual Studio 2013 Unit Testing.
 
 ###Files
-- **<a href="../bungieboggletoolunittests/BungieBoggleToolTests.cs">BungieBoggleToolTests.cs</a>**: Unit Test file for the BungieBoggleTool.
-- **<a href="../bungieboggletoolunittests/DictionaryTests.cs">DictionaryTests.cs</a>**: Unit Test file for the Dictionary.
-- **<a href="../bungieboggletoolunittests/BoggleGridTests.cs">BoggleGridTests.cs</a>**: Unit Test file for the BoggleGrid.
-- **<a href="../bungieboggletoolunittests/LetterTests.cs">LetterTests.cs</a>**: Unit Test file for the Letter.
-- **<a href="../bungieboggletoolunittests/CoordinateTests.cs">CoordinateTests.cs</a>**: Unit Test file for the Coordinate.
-- **<a href="../bungieboggletoolunittests/PrefixStackSetTests.cs">PrefixStackSetTests.cs</a>**: Unit Test file for the PrefixStackSet.
-- **<a href="../bungieboggletoolunittests/Resources.cs">Resources.cs</a>**: File contain file paths.  Update the resource full path to your machine to get the grid tests to run.  Can also generate a grid file of provided dimensions.  Set GENERATE_GRID to 'true' and set the desired dimensions.
+- **<a href="../BungieBoggleToolUnitTests/BungieBoggleToolTests.cs">BungieBoggleToolTests.cs</a>**: Unit Test file for the BungieBoggleTool.
+- **<a href="../BungieBoggleToolUnitTests/DictionaryTests.cs">DictionaryTests.cs</a>**: Unit Test file for the Dictionary.
+- **<a href="../BungieBoggleToolUnitTests/BoggleGridTests.cs">BoggleGridTests.cs</a>**: Unit Test file for the BoggleGrid.
+- **<a href="../BungieBoggleToolUnitTests/LetterTests.cs">LetterTests.cs</a>**: Unit Test file for the Letter.
+- **<a href="../BungieBoggleToolUnitTests/CoordinateTests.cs">CoordinateTests.cs</a>**: Unit Test file for the Coordinate.
+- **<a href="../BungieBoggleToolUnitTests/PrefixStackSetTests.cs">PrefixStackSetTests.cs</a>**: Unit Test file for the PrefixStackSet.
+- **<a href="../BungieBoggleToolUnitTests/Resources.cs">Resources.cs</a>**: File contain file paths.  Update the resource full path to your machine to get the grid tests to run.  Can also generate a grid file of provided dimensions.  Set GENERATE_GRID to 'true' and set the desired dimensions.
 
 ###Summary
 Each class has a set of unit tests covering basic functionality as well as scenarios.  BungieBoggleToolTests contains a set of tests that verify multiple grids against solution files.  The solution files the format of gridFileName + "Solution" + Resource.FILE_EXTENSION.
