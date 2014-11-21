@@ -91,6 +91,7 @@ The Console Application built when compileing and running BungieBoggleTool has a
  <img src="resources/bungieboggletool.jpg" />
 
 ###Test Cases
+(Note: '#' denotes a 'Qu' block)
 
 - **boggleGrid1.txt**: Initial 3x3 grid provided by Bungie.
 
