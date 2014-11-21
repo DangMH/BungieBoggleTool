@@ -27,16 +27,16 @@ Written in Visual Studio 2013
 
 ###Files
 
-- **sowpods.txt**: [Europe Scrabble Word List](http://www.freescrabbledictionary.com/sowpods.txt).
-- **TWL\_2006\_LENGTH.txt**: [Scrabble Junction Word List](http://www.scrabblejunction.org/wordlists.htm).
-- **ospd.txt**: [Official Scrabble Players Dictionary](http://www.puzzlers.org/pub/wordlists/ospd.txt).
-- **BungieBoggleTool.cd**: Class diagram of the console application.
-- **BungieBoggleTool.cs**: Main file containing console application.
-- **Dictionary.cs**: Class representing the dictionary list of words to check against.
-- **BoggleGrid.cs**: Class representing the Boggle Grid.
-- **Letter.cs**: Class representing the Boggle Block.
-- **Coordinate.cs**: Class representing a coordinate.
-- **PrefixStackSet.cs**: Class that contains Stack and Set functionality and tracks current prefix.  Used in the iterative DFS algorithm.
+- **<a href="resources/sowpods.txt">sowpods.txt</a>**: [Europe Scrabble Word List](http://www.freescrabbledictionary.com/sowpods.txt).
+- **<a href="resources/twl_2006_length.txt">twl_2006_length.txt</a>**: [Scrabble Junction Word List](http://www.scrabblejunction.org/wordlists.htm).
+- **<a href="resources/ospd.txt">ospd.txt</a>**: [Official Scrabble Players Dictionary](http://www.puzzlers.org/pub/wordlists/ospd.txt).
+- **<a href="bungieboggletool.cd">bungieboggletool.cd</a>**: Class diagram of the console application.
+- **<a href="bungieboggletool.cs">bungieboggletool.cs</a>**: Main file containing console application.
+- **<a href="dictionary.cs">dictionary.cs</a>**: Class representing the dictionary list of words to check against.
+- **<a href="bogglegrid.cs">bogglegrid.cs</a>**: Class representing the Boggle Grid.
+- **<a href="letter.cs">letter.cs</a>**: Class representing the Boggle Block.
+- **<a href="coordinate.cs">coordinate.cs</a>**: Class representing a coordinate.
+- **<a href="prefixstackset.cs">prefixstackset.cs</a>**: Class that contains Stack and Set functionality and tracks current prefix.  Used in the iterative DFS algorithm.
 
 ###Installation
 
@@ -72,13 +72,13 @@ TESTING
 Tests were built with Visual Studio 2013 Unit Testing.
 
 ###Files
-- **BungieBoggleToolTests.cs**: Unit Test file for the BungieBoggleTool.
-- **DictionaryTests.cs**: Unit Test file for the Dictionary.
-- **BoggleGridTests.cs**: Unit Test file for the BoggleGrid.
-- **LetterTests.cs**: Unit Test file for the Letter.
-- **CoordinateTests.cs**: Unit Test file for the Coordinate.
-- **PrefixStackSetTests.cs**: Unit Test file for the PrefixStackSet.
-- **Resources.cs**: File contain file paths.  Update the resource full path to your machine to get the grid tests to run.  Can also generate a grid file of provided dimensions.  Set GENERATE_GRID to 'true' and set the desired dimensions.
+- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\bungieboggletooltests.cs">bungieboggletooltests.cs</a>**: Unit Test file for the BungieBoggleTool.
+- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\dictionarytests.cs">dictionarytests.cs</a>**: Unit Test file for the Dictionary.
+- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\bogglegridtests.cs">bogglegridtests.cs</a>**: Unit Test file for the BoggleGrid.
+- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\lettertests.cs">lettertests.cs</a>**: Unit Test file for the Letter.
+- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\coordinatetests.cs">coordinatetests.cs</a>**: Unit Test file for the Coordinate.
+- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\prefixstacksettests.cs">prefixstacksettests.cs</a>**: Unit Test file for the PrefixStackSet.
+- **<a href="d:\users\michael\source\repos\bungieboggletool\bungieboggletool\bungieboggletoolunittests\resources.cs">resources.cs</a>**: File contain file paths.  Update the resource full path to your machine to get the grid tests to run.  Can also generate a grid file of provided dimensions.  Set GENERATE_GRID to 'true' and set the desired dimensions.
 
 ###Summary
 Each class has a set of unit tests covering basic functionality as well as scenarios.  BungieBoggleToolTests contains a set of tests that verify multiple grids against solution files.  The solution files the format of gridFileName + "Solution" + Resource.FILE_EXTENSION.
@@ -92,21 +92,55 @@ The Console Application built when compileing and running BungieBoggleTool has a
 
 ![BungieBoggleTool.JPG](Resources/BungieBoggleTool.JPG)
 
-###Test Cases
-(Note: '#' denotes a 'Qu' block)
+###File Formatting
 
-- **boggleGrid1.txt**: Initial 3x3 grid provided by Bungie.
+In order to comply with the Unit Tests, input files should be stored in the \Resources dir.  Add the filenames to the Resources.cs file and ensure they are the appropriate extension according to the Resources.cs file.
+
+- **Grid File**  
+n  
+m  
+a<sub>00</sub>a<sub>01</sub>a<sub>0..</sub>a<sub>0(m-1)</sub>  
+a<sub>10</sub>a<sub>11</sub>a<sub>1..</sub>a<sub>1(m-1)</sub>  
+a<sub>..0</sub>a<sub>..1</sub>a<sub>.. ..</sub>a<sub>..(m-1)</sub>  
+a<sub>(n-1)0</sub>a<sub>(n-1)1</sub>a<sub>(n-1)..</sub>a<sub>(n-1)(m-1)</sub>a</sub>  
+
+where **n** is the number of rows, **m** is the number of columns, and **a** is a character of the designated boggle block (in this case a-z, A-Z, #, where # designates 'Qu').
+
+- **Dictionary File**  
+word<sub>0</sub>  
+word<sub>1</sub>  
+...  
+word<sub>n-1</sub>  
+
+where **n** is the number of words.  Words should be delimited by new lines.  Input terminate by EOF.
+
+- **Solution File**  
+word<sub>0</sub>  
+word<sub>1</sub>  
+...  
+word<sub>n-1</sub>  
+
+where **n** is the number of words.  Words should be delimited by new lines.  Input terminate by EOF.
+
+###Test Cases
+(Note: '#' denotes a 'Qu' block.  Solutions are based on ospd.txt)
+
+- **<a href="resources/bogglegrid1.txt">bogglegrid1.txt</a>**: Initial 3x3 grid provided by Bungie.
 
     yox  
     rba  
     ved  
 
-- **boggleGrid2.txt**: Simple 2x2 grid.
+    <a href="resources/bogglegrid1solution.txt">bogglegrid1solution.txt</a>
+
+- **<a href="resources/bogglegrid2.txt">bogglegrid2.txt</a>**: Simple 2x2 grid.
 
     CO  
     AT  
 
-- **gBoggleGrid0.txt**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
+    <a href="resources/bogglegrid2solution.txt">bogglegrid2solution.txt</a>
+
+- **<a href="resources/gbogglegrid0.txt">gbogglegrid0.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
 
     plrntp  
     lnprce  
@@ -115,7 +149,9 @@ The Console Application built when compileing and running BungieBoggleTool has a
     tccmmw  
     pekqwb  
 
-- **gBoggleGrid1.txt**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
+    <a href="resources/gbogglegrid0solution.txt">gbogglegrid0solution.txt</a>
+
+- **<a href="resources/gbogglegrid1.txt">gbogglegrid1.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
 
     fbhdjf  
     bdfrtv  
@@ -124,7 +160,9 @@ The Console Application built when compileing and running BungieBoggleTool has a
     jttccm  
     fvagms  
 
-- **gBoggleGrid2.txt**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
+    <a href="resources/gbogglegrid1solution.txt">gbogglegrid1solution.txt</a>
+
+- **<a href="resources/gbogglegrid2.txt">gbogglegrid2.txt</a>**: 6x6 grid randomly generated by BoggleGrid.Generate(6, 6) and solved by [Big Boggle Solver: 6x6 Frid Helper](http://www.hanginghyena.com/solvers/6x6-boggle-solver).
 
     cxavzt  
     xvtrpn  
@@ -133,7 +171,9 @@ The Console Application built when compileing and running BungieBoggleTool has a
     zpffww  
     tnhbwg  
 
-- **gBoggleGrid3.txt**: 10x10 grid randomly generated by BoggleGrid.Generate(10, 10) and solved by [The Word Solver](http://www.wordsolver.co.uk/).
+    <a href="resources/gbogglegrid2solution.txt">gbogglegrid2solution.txt</a>
+
+- **<a href="resources/gbogglegrid3.txt">gbogglegrid3.txt</a>**: 10x10 grid randomly generated by BoggleGrid.Generate(10, 10) and solved by [The Word Solver](http://www.wordsolver.co.uk/).
 
     ezkeicgaez  
     gecazxvtrp  
@@ -145,3 +185,5 @@ The Console Application built when compileing and running BungieBoggleTool has a
     atldmexph#  
     erd#mzlhug  
     zpfmctj#gx  
+
+    <a href="resources/gbogglegrid3solution.txt">gbogglegrid3solution.txt</a>
