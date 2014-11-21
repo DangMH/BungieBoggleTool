@@ -20,12 +20,12 @@ namespace BungieBoggleTool
         /// </summary>
         private Dictionary<Coordinate, Letter> letters;
 
-        private int numRows;
+        private uint numRows;
 
         /// <summary>
         /// Number of Rows.
         /// </summary>
-        public int NumRows
+        public uint NumRows
         {
             get
             {
@@ -37,12 +37,12 @@ namespace BungieBoggleTool
             }
         }
 
-        private int numCols;
+        private uint numCols;
 
         /// <summary>
         /// Number of Rows.
         /// </summary>
-        public int NumCols
+        public uint NumCols
         {
             get
             {
@@ -65,7 +65,7 @@ namespace BungieBoggleTool
         }
 
         /// <summary>
-        /// Default constrcutor.  Generates default grid.
+        /// Default constructor.  Generates default grid.
         /// </summary>
         public BoggleGrid()
         {
@@ -95,7 +95,7 @@ namespace BungieBoggleTool
             string line = null;
             bool errorOccured = false;
             Letter letter = null;
-            int rowsRead = 0,
+            uint rowsRead = 0,
                 colsRead = 0;
 
             NumRows = 0;
@@ -109,7 +109,7 @@ namespace BungieBoggleTool
                     Console.WriteLine("FORMATTING ERROR: Missing BoggleGrid row value");
                     break;
                 }
-                if (errorOccured = !Int32.TryParse(line, out rowsRead))
+                if (errorOccured = !UInt32.TryParse(line, out rowsRead))
                 {
                     Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid row value: " + NumRows);
                     break;
@@ -122,17 +122,26 @@ namespace BungieBoggleTool
                     Console.WriteLine("FORMATTING ERROR: Missing BoggleGrid column value");
                     break;
                 }
-                if (errorOccured = !Int32.TryParse(line, out colsRead))
+                if (errorOccured = !UInt32.TryParse(line, out colsRead))
                 {
                     Console.WriteLine("FORMATTING ERROR: Incorrect format for BoggleGrid column value: " + NumCols);
                     break;
                 }
                 NumCols = colsRead;
 
-                letters = new Dictionary<Coordinate, Letter>(NumRows * NumCols);
+                try
+                {
+                    letters = new Dictionary<Coordinate, Letter>(checked((int)NumRows * (int)NumCols));
+                }
+                catch(OverflowException oe)
+                {
+                    Console.WriteLine("FORMATTING ERROR: Dimensions are too large: " + NumRows + "X" + NumCols);
+                    Console.WriteLine( oe.ToString() );
+                    errorOccured = true;
+                    break;
+                }
                 uniqueLetters = new HashSet<char>();
-
-                for (int i = 0; i < NumRows; ++i)
+                for (uint i = 0; i < NumRows; ++i)
                 {
 
                     // Read the ith row
@@ -149,10 +158,10 @@ namespace BungieBoggleTool
                         break;
                     }
 
-                    for (int j = 0; j < NumCols; ++j)
+                    for (uint j = 0; j < NumCols; ++j)
                     {
                         // Read the char at the ith column
-                        letters.Add(new Coordinate(i, j), letter = new Letter(line[j]));
+                        letters.Add(new Coordinate((int)i, (int)j), letter = new Letter(line[(int)j]));
 
                         // Add letters to the uniqueLetter set
                         foreach (char c in letter.ToString())
@@ -191,21 +200,33 @@ namespace BungieBoggleTool
         /// </summary>
         /// <param name="numRows">Number of rows in the boggleGrid.</param>
         /// <param name="numCols">Number of columns in the boggleGrid.</param>
-        public void GenerateGrid(int numRows, int numCols)
+        public void GenerateGrid(uint numRows, uint numCols)
         {
             Letter letter;
 
             NumRows = numRows;
             NumCols = numCols;
 
-            letters = new Dictionary<Coordinate, Letter>(NumRows * NumCols);
+            try
+            {
+                letters = new Dictionary<Coordinate, Letter>(checked((int)NumRows * (int)NumCols));
+            }
+            catch(OverflowException oe)
+            {
+                Console.WriteLine("FORMATTING ERROR: Dimensions are too large: " + NumRows + "X" + NumCols);
+                Console.WriteLine(oe.ToString());
+
+                GenerateGrid();
+                return;
+            }
+
             uniqueLetters = new HashSet<char>();
 
-            for (int i = 0; i < NumRows; ++i)
+            for (uint i = 0; i < NumRows; ++i)
             {
-                for (int j = 0; j < NumCols; ++j)
+                for (uint j = 0; j < NumCols; ++j)
                 {
-                    letters.Add(new Coordinate(i, j), letter = new Letter((int)DateTime.Now.Ticks + (i + 1) * (j + 1)));
+                    letters.Add(new Coordinate((int)i, (int)j), letter = new Letter((uint)DateTime.Now.Ticks + (i + 1) * (j + 1)));
                     foreach (char c in letter.ToString())
                     {
                         uniqueLetters.Add(c);
@@ -232,11 +253,11 @@ namespace BungieBoggleTool
             ret += NumRows + "\r\n";
             ret += NumCols + "\r\n";
 
-            for (int i = 0; i < numRows; ++i)
+            for (uint i = 0; i < numRows; ++i)
             {
-                for (int j = 0; j < numCols; ++j)
+                for (uint j = 0; j < numCols; ++j)
                 {
-                    ret += letters[new Coordinate(i, j)].Symbol;
+                    ret += letters[new Coordinate((int)i, (int)j)].Symbol;
                 }
                 ret += "\r\n";
             }
@@ -251,11 +272,11 @@ namespace BungieBoggleTool
         {
             string ret = "";
 
-            for (int i = 0; i < numRows; ++i)
+            for (uint i = 0; i < numRows; ++i)
             {
-                for (int j = 0; j < numCols; ++j)
+                for (uint j = 0; j < numCols; ++j)
                 {
-                    ret += letters[new Coordinate(i, j)] + " ";
+                    ret += letters[new Coordinate((int)i, (int)j)] + " ";
                 }
                 ret = ret.Substring(0, ret.Length - 1) + "\n";
             }

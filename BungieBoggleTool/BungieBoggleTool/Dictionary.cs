@@ -15,7 +15,7 @@ namespace BungieBoggleTool
         /// <summary>
         /// Minimum word size for dictionary validation.
         /// </summary>
-        public static int MIN_WORD_LENGTH = 4;
+        public static uint MIN_WORD_LENGTH = 4;
 
         /// <summary>
         /// Set of words in the dictionary.

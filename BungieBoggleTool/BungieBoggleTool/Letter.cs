@@ -34,7 +34,7 @@ namespace BungieBoggleTool
         /// <summary>
         /// Number of legal symbols.
         /// </summary>
-        private static int numSymbols = 27;
+        private static uint numSymbols = 27;
 
         /// <summary>
         /// Populates Letter with given string.
@@ -65,7 +65,7 @@ namespace BungieBoggleTool
         /// Default constructor.  Generates a random Letter;
         /// </summary>
         public Letter()
-            : this((int)DateTime.Now.Ticks)
+            : this((uint)DateTime.Now.Ticks)
         {
 
         }
@@ -74,9 +74,9 @@ namespace BungieBoggleTool
         /// Generates a randm Letter with the given seed;
         /// </summary>
         /// <param name="seed">Seed for random number generator.</param>
-        public Letter(int seed)
+        public Letter(uint seed)
         {
-            int mSeed = new Random(seed).Next() % numSymbols;
+            uint mSeed = unchecked((uint)(new Random((int)seed)).Next()) % numSymbols;
 
             if (26 > mSeed)
             {

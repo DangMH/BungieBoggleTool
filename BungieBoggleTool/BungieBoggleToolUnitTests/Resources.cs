@@ -18,8 +18,8 @@ namespace BungieBoggleToolUnitTests
         public static string BOGGLEGRID2_FILEPATH = RESOURCES_FILEPATH + @"boggleGrid2" + FILE_EXTENSION;
         public static string GENERATED_GRID_FILEPATH = RESOURCES_FILEPATH + @"gBoggleGrid" + FILE_EXTENSION;
         public static bool GENERATE_GRID = false;
-        public static int GRID_ROW_SIZE = 10;
-        public static int GRID_COL_SIZE = 10;
+        public static uint GRID_ROW_SIZE = 10;
+        public static uint GRID_COL_SIZE = 10;
 
         public static string GenerateGridSolutionFilePath(string filePath)
         {
