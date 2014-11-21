@@ -68,6 +68,7 @@
     <Content Include="Resources\boggleGrid2Solution.txt" />
     <None Include="Resources\BungieBoggleTool.JPG" />
     <Content Include="Resources\BungieBoggleTool.exe" />
+    <Content Include="Resources\ClassDiagram.JPG" />
     <Content Include="Resources\gBoggleGrid0.txt" />
     <None Include="Resources\gBoggleGrid0Solution.txt" />
     <Content Include="Resources\gBoggleGrid1.txt" />
