@@ -165,6 +165,16 @@ namespace BungieBoggleTool.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] BungieBoggleTool1 {
+            get {
+                object obj = ResourceManager.GetObject("BungieBoggleTool1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 6
         ///6
         ///plrntp
